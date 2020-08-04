@@ -1,4 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flare_dart/math/mat2d.dart';
+import 'package:flare_flutter/flare.dart';
+import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -19,7 +23,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class LoadingScreen extends StatelessWidget {
+class LoadingScreen extends StatefulWidget {
+  @override
+  _LoadingScreenState createState() => _LoadingScreenState();
+}
+
+class _LoadingScreenState extends State<LoadingScreen> with FlareController {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,8 +45,22 @@ class LoadingScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: 30.0, right: 30, left: 30),
             alignment: Alignment.center,
             color: Colors.white,
-            child: Image.network(
-                'https://www.vhv.rs/dpng/d/246-2462095_clip-art-baby-loading-clipart-baby-loading-hd.png'),
+            child: CircleAvatar(
+              radius: 125,
+              backgroundImage: NetworkImage(
+                  'https://www.vhv.rs/dpng/d/246-2462095_clip-art-baby-loading-clipart-baby-loading-hd.png'),
+            ),
+          ),
+          Container(
+            height: 100,
+            width: 100,
+            child: FlareActor(
+              "assets/loading.flr",
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
+              animation: 'activate',
+              controller: this,
+            ),
           ),
           Container(
             padding: EdgeInsets.all(20),
@@ -45,8 +73,18 @@ class LoadingScreen extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
+
+  @override
+  bool advance(FlutterActorArtboard artboard, double elapsed) {
+    return false;
+  }
+
+  @override
+  void initialize(FlutterActorArtboard artboard) {}
+
+  @override
+  void setViewTransform(Mat2D viewTransform) {}
 }
 
 class FeverReceipts extends StatelessWidget {
