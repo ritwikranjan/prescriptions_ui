@@ -30,7 +30,7 @@ class LoadingScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 30.0, right: 30, left: 30),
             alignment: Alignment.center,
-            color: Colors.white,  
+            color: Colors.white,
             child: Image.network(
                 'https://www.vhv.rs/dpng/d/246-2462095_clip-art-baby-loading-clipart-baby-loading-hd.png'),
           ),
