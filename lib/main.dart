@@ -12,13 +12,40 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Fever Receipts'),
-        ),
         backgroundColor: Colors.white,
-        body: FeverReceipts(),
+        body: LoadingScreen(),
       ),
     );
+  }
+}
+
+class LoadingScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(top: 30.0, right: 30, left: 30),
+            alignment: Alignment.center,
+            color: Colors.white,  
+            child: Image.network(
+                'https://www.vhv.rs/dpng/d/246-2462095_clip-art-baby-loading-clipart-baby-loading-hd.png'),
+          ),
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Text(
+              'Loading.....',
+              style: TextStyle(fontSize: 35),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+    ;
   }
 }
 
