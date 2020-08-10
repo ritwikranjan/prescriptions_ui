@@ -64,10 +64,32 @@ class _LoadingScreenState extends State<LoadingScreen> with FlareController {
           ),
           Container(
             padding: EdgeInsets.all(20),
-            child: Text(
-              'Loading.....',
-              style: TextStyle(fontSize: 35),
+            child: RichText(
               textAlign: TextAlign.center,
+              text: TextSpan(
+                  text: 'Please Wait\n',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Color(0xFF6B7588),
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: [
+                    TextSpan(
+                        text: 'while',
+                        style: TextStyle(
+                          color: Color(0xFF6B7588),
+                        )),
+                    TextSpan(
+                        text: ' curer ',
+                        style: TextStyle(
+                          color: Color(0xFFDF546B),
+                        )),
+                    TextSpan(
+                        text: 'is finding best doctor for you',
+                        style: TextStyle(
+                          color: Color(0xFF6B7588),
+                        )),
+                  ]),
             ),
           ),
         ],
@@ -87,23 +109,22 @@ class _LoadingScreenState extends State<LoadingScreen> with FlareController {
   void setViewTransform(Mat2D viewTransform) {}
 }
 
+List<String> imageList = [
+  'https://cdn.mos.cms.futurecdn.net/VRv8ab66tAfezxvXdXVpfe-1200-80.jpg',
+  'https://blog.universalmedicalinc.com/wp-content/uploads/sites/264/gallery/postimages/cache/photodune-2618118-hands-xray-l.JPG-nggid042182-ngg0dyn-0x0x100-00f0w010c010r110f110r010t010.JPG'
+];
+
 class FeverReceipts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: GridView.count(
-        crossAxisCount: 3,
-        children: <Widget>[
-          FeverReceiptsChildren(
-            imgUrl:
-                'https://cdn.mos.cms.futurecdn.net/VRv8ab66tAfezxvXdXVpfe-1200-80.jpg',
-          ),
-          FeverReceiptsChildren(
-            imgUrl:
-                'https://blog.universalmedicalinc.com/wp-content/uploads/sites/264/gallery/postimages/cache/photodune-2618118-hands-xray-l.JPG-nggid042182-ngg0dyn-0x0x100-00f0w010c010r110f110r010t010.JPG',
-          )
-        ],
-      ),
+          crossAxisCount: 3,
+          children: imageList
+              .map((e) => FeverReceiptsChildren(
+                    imgUrl: e,
+                  ))
+              .toList()),
     );
   }
 }
