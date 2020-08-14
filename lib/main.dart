@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
-        body: LoadingScreen(),
+        body: PaymentSuccessfulPage(),
       ),
     );
   }
@@ -369,6 +369,56 @@ class PrescriptionTile extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PaymentFailure extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(top: 30.0, right: 30, left: 30),
+              alignment: Alignment.center,
+              color: Colors.white,
+              child: Image.asset('images/failed.png'),
+            ),
+          ),
+          Container(
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                  text: 'Payment ',
+                  style: TextStyle(fontSize: 35, color: Colors.blueGrey[900]),
+                  children: [
+                    TextSpan(
+                        text: 'Failed',
+                        style: TextStyle(
+                          color: Colors.red,
+                        ))
+                  ]),
+            ),
+          ),
+          SizedBox(
+            height: 150,
+          ),
+          Container(
+            width: double.maxFinite,
+            margin: EdgeInsets.fromLTRB(35, 10, 35, 40),
+            child: RaisedButton(
+              textColor: Colors.white,
+              color: Colors.blue,
+              onPressed: () {},
+              child: Text('Retry Payment'),
+            ),
+          )
+        ],
       ),
     );
   }
